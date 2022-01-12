@@ -1,7 +1,7 @@
 import base64
 import binascii
 
-from .exceptions import Base64Error, DecodeError
+from .exceptions import ParseError, DecodeError
 
 
 class Base64Decoder(object):
@@ -58,7 +58,7 @@ class Base64Decoder(object):
         if len(val) > 0:
             try:
                 decoded = base64.b64decode(val)
-            except Base64Error:
+            except ParseError:
                 raise DecodeError('There was an error raised while decoding '
                                   'base64-encoded data.')
 
